@@ -1,0 +1,40 @@
+#include <windows.h>
+
+#define VER    1,0,0,0
+#define VERSTR "1.0"
+
+#define RELEASE
+/*#define _WIN64*/
+
+VS_VERSION_INFO	VERSIONINFO
+FILEVERSION     VER
+PRODUCTVERSION  VER
+#ifndef RELEASE
+FILEFLAGS       /VS_FF_PRERELEASE
+#endif
+FILEOS          VOS__WINDOWS32
+FILETYPE        VFT_APP {
+	BLOCK "StringFileInfo" {
+		BLOCK "000004E4" {
+			VALUE "CompanyName",      "Sijmen J. Mulder"
+			VALUE "FileVersion",      VERSTR
+			VALUE "LegalCopyright",   "© 2017 Sijmen J. Mulder"
+			VALUE "ProductName",      "Close All Windows"
+			VALUE "ProductVersion",   VERSTR
+
+#ifdef _WIN64
+			VALUE "FileDescription",  "Close All Windows (64-bit)"
+			VALUE "InternalName",     "closeall-64"
+			VALUE "OriginalFilename", "closeall-64.exe"
+#else
+			VALUE "FileDescription",  "Close All Windows (32-bit)"
+			VALUE "InternalName",     "closeall"
+			VALUE "OriginalFilename", "closeall.exe"
+#endif
+		}
+	}
+
+	BLOCK "VarFileInfo" {
+		VALUE "Translation", 0, 1252
+	}
+}
